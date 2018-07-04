@@ -20,11 +20,10 @@ function renderButtons() {
     GIFMechanics();
 }
 
-
 // add more foods to the array
 $("#add-food").on("click", function(event) {
     event.preventDefault();
-
+   
     // This line grabs the input from the textbox
     var moreFood = $("#food-input").val().trim();
 
@@ -32,6 +31,7 @@ $("#add-food").on("click", function(event) {
     foods.push(moreFood);
     renderButtons();
     a = foods.length;
+    document.forms['food-form'].reset()
   });
 
 
@@ -49,6 +49,7 @@ $(".buttons button").click(function() {
     }).then(function(response) {
         for(var i = 0; i < 11; i++) {
             $(".gifs").append("<img src='" + response.data[i].images.fixed_height.url + "'>");
+            $(".gifs").css("display", "inline");
             $(".gifs").append("<p>" + response.data[i].rating+ "</p>");
         }
     });
