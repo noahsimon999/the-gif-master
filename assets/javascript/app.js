@@ -15,8 +15,9 @@ renderButtons();
 function renderButtons() {
     for(a; a < foods.length; a++) {
         $(".buttons").append("<button>" + foods[a] + "</button>")
-        GIFMechanics();
+        
     }
+    GIFMechanics();
 }
 
 
