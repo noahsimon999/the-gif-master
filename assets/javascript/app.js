@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     // listens for a button click and then returns gifs
     function GIFMechanics() {
-        var userChoice = foods[0];
+        var userChoice;
         $(".buttons button").click(function () {
             userChoice = $(this).text();
             console.log(userChoice);
@@ -52,26 +52,43 @@ $(document).ready(function () {
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                for (var i = 0; i < 3; i++) {
-                    $(".gifs").append("<img class='imgSize' src='" + response.data[i].images.fixed_height.url + "'>");
+                for (var i = 0; i < 5; i++) {
+                    $(".gifs").append("<img src='" + response.data[i].images.fixed_height_still.url + "' data-still='" + response.data[i].images.fixed_height_still.url + "' data-animate='" + response.data[i].images.fixed_height.url + "' data-state='still' class='imgSize'>");
+                    
                     $(".gifs").append("<p>" + response.data[i].rating + "</p>");
-                    var q = 1;                    
-                }
-                $(".buttons button").click(function () {
-                    q += 1; 
-                    console.log(q);
-                    var g = q*3;
-                    console.log("two" + q);
-                    if(g < 25) {
-                        for (i; i < g ; i++) {
-                            console.log(i);
-                            $(".gifs").append("<img class='imgSize' src='" + response.data[i].images.fixed_height.url + "'>");
-                            $(".gifs").append("<p>" + response.data[i].rating + "</p>"); 
+                   
+                    $(".imgSize").on("click", function() {
+                        var state = $(this).attr("data-state");
+                        console.log(state);
+                
+                        if(state === "still") {
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                        } else {
+                        $(this).attr("src", $(this).attr("data-still"));
+                        $(this).attr("data-state", "still");
                         }
-                    } else {
-                        return false;
-                    }
-                });
+                    })
+
+                    var q = 1;
+                }
+                
+
+                // $(".buttons button").click(function () {
+                //     q += 1; 
+                //     console.log(q);
+                //     var g = q*3;
+                //     console.log("two" + q);
+                //     if(g < 25) {
+                //         for (i; i < g ; i++) {
+                //             console.log(i);
+                //             $(".gifs").append("<img class='imgSize' src='" + response.data[i].images.fixed_height.url + "'>");
+                //             $(".gifs").append("<p>" + response.data[i].rating + "</p>"); 
+                //         }
+                //     } else {
+                //         return false;
+                //     }
+                // });
 
             });
         })
