@@ -14,7 +14,7 @@ $(document).ready(function () {
     function renderButtons() {
         $(".buttons").empty();
         for (var a = 0; a < foods.length; a++) {
-            $(".buttons").append("<button>" + foods[a] + "</button>")
+            $(".buttons").append("<button class='foods'>" + foods[a] + "</button>")
         }
         GIFMechanics();
     }
@@ -52,12 +52,10 @@ $(document).ready(function () {
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                for (var i = 0; i < 5; i++) {
+                for (var i = 0; i < 25; i++) {
                     $(".gifs").append("<img src='" + response.data[i].images.fixed_height_still.url + "' data-still='" + response.data[i].images.fixed_height_still.url + "' data-animate='" + response.data[i].images.fixed_height.url + "' data-state='still' class='imgSize'>");
                     
-                    $(".gifs").append("<p>" + response.data[i].rating + "</p>");
-                   
-                    
+                    $(".gifs").append("<p class='rating'>Rating: " + response.data[i].rating + "</p>");
 
                     var q = 1;
                 }
