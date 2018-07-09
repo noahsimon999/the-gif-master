@@ -64,7 +64,8 @@ $(document).ready(function () {
                         if(state === "still") {
                         $(this).attr("src", $(this).attr("data-animate"));
                         $(this).attr("data-state", "animate");
-                        } else {
+                        } 
+                        if(state === "animate") {
                         $(this).attr("src", $(this).attr("data-still"));
                         $(this).attr("data-state", "still");
                         }
