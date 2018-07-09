@@ -8,6 +8,7 @@ body {
     text-align: center;
     height: 125px;
     border: 2px solid black;
+    opacity: .85;
 }
 
 .header h1 {
@@ -16,16 +17,22 @@ body {
 
 .left {
     background-color: gray;
-    height: 100%;
+    height:90vh;
     padding-bottom: 50px;
+    overflow: scroll;
+    overflow-x: hidden;
     
 }
 
-.col-4 {
-    height:100vh; 
-}
 
 .right {
+    height: 90vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.buttons button:hover {
+    background-color: blue;
+    color: white;
     
 }
 

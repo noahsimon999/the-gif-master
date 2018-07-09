@@ -8,7 +8,7 @@ $(document).ready(function () {
     // add new button to list of of button
 
     // display list of gif buttons
-    var foods = ["pizza", "pasta", "pork", "ribs", "hamburgers", "hotdogs", "french fries"]
+    var foods = ["pizza", "pasta", "pork", "ribs", "hamburgers", "hotdogs", "french fries", "bread", "apples", "potatoes", "barbecue", "bear claw", "beef", "steak", "burrito", "buffalo wings", "Cajun cuisine", "butter cookie", "cheese", "cheese steak", "chili", "chicken", "chili dog", "chimichanga", "chicken fried steak", "queso", "chips and dip", "dark chocolate", "white chocolate", "milk chocolate", "chocolate chip cookies", "chowder", "coleslaw", "corn dog", "corned beef"]
     renderButtons();
 
     function renderButtons() {
