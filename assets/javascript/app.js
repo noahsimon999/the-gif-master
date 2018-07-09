@@ -57,22 +57,24 @@ $(document).ready(function () {
                     
                     $(".gifs").append("<p>" + response.data[i].rating + "</p>");
                    
-                    $(".imgSize").on("click", function() {
-                        var state = $(this).attr("data-state");
-                        console.log(state);
-                
-                        if(state === "still") {
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
-                        } 
-                        if(state === "animate") {
-                        $(this).attr("src", $(this).attr("data-still"));
-                        $(this).attr("data-state", "still");
-                        }
-                    })
+                    
 
                     var q = 1;
                 }
+
+                $(".imgSize").on("click", function() {
+                    var state = $(this).attr("data-state");
+                    console.log(state);
+            
+                    if(state === "still") {
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate");
+                    } 
+                    if(state === "animate") {
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
+                    }
+                })
                 
 
                 // $(".buttons button").click(function () {
