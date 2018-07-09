@@ -34,5 +34,6 @@ body {
 }
 
 .rating {
-    display: inline;
+    display: block;
+    color: white;
 }
