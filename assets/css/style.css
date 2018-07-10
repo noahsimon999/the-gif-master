@@ -3,18 +3,26 @@ body {
     background-image: url("../images/polka-dots.png");
 }
 
-.header {
+.jumbotron {
     background-color: white;
     text-align: center;
-    height: 125px;
+    height: 80%;
+    padding: 20px;
     border: 2px solid black;
     opacity: .85;
 }
 
-.header h1 {
+.jumbotron h1 {
     font-size: 5em;
 }
 
+
+
+.row {
+    width: 99%;
+    position: relative;
+    left: 20px;
+}
 .left {
     background-color: gray;
     height:90vh;

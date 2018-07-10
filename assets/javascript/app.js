@@ -14,7 +14,7 @@ $(document).ready(function () {
     function renderButtons() {
         $(".buttons").empty();
         for (var a = 0; a < foods.length; a++) {
-            $(".buttons").append("<button class='foods'>" + foods[a] + "</button>")
+            $(".buttons").prepend("<button class='foods'>" + foods[a] + "</button>")
         }
         GIFMechanics();
     }
