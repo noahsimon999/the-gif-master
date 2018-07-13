@@ -1,12 +1,4 @@
 $(document).ready(function () {
-
-    // display list of gif buttons
-    // display gifs when button is selected
-    // display rating on each gif
-    // when each gif is clicked play the gif, stop playing when clicked again
-    // get user input from search
-    // add new button to list of of button
-
     // display list of gif buttons
     var foods = ["pizza", "pasta", "pork", "ribs", "hamburgers", "hotdogs", "french fries", "bread", "apples", "potatoes", "barbecue", "bear claw", "beef", "steak", "burrito", "buffalo wings", "Cajun cuisine", "butter cookie", "cheese", "cheese steak", "chili", "chicken", "chili dog", "chimichanga", "chicken fried steak", "queso", "chips and dip", "dark chocolate", "white chocolate", "milk chocolate", "chocolate chip cookies", "chowder", "coleslaw", "corn dog", "corned beef"]
     renderButtons();
@@ -37,7 +29,6 @@ $(document).ready(function () {
         }
     });
 
-
     // listens for a button click and then returns gifs
     function GIFMechanics() {
         var userChoice;
@@ -48,49 +39,31 @@ $(document).ready(function () {
 
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userChoice + "&api_key=WbTEMDjbiX3J4qK6LNwGmIY5YXxfMuzq";
 
+            // calls the giphy api and renders gifs
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
                 for (var i = 0; i < 25; i++) {
-                    $(".gifs").append("<img src='" + response.data[i].images.fixed_height_still.url + "' data-still='" + response.data[i].images.fixed_height_still.url + "' data-animate='" + response.data[i].images.fixed_height.url + "' data-state='still' class='imgSize'>");
-                    
+                    $(".gifs").append("<img src='" + response.data[i].images.fixed_height.url + "' data-animate='" + response.data[i].images.fixed_height.url + "' data-still='" + response.data[i].images.fixed_height_still.url + "' data-state='animate' class='imgSize'>");
                     $(".gifs").append("<p class='rating'>Rating: " + response.data[i].rating + "</p>");
-
-                    var q = 1;
                 }
 
+                // pauses and plays buttons
                 $(".imgSize").on("click", function() {
                     var state = $(this).attr("data-state");
                     console.log(state);
-            
-                    if(state === "still") {
-                    $(this).attr("src", $(this).attr("data-animate"));
-                    $(this).attr("data-state", "animate");
-                    } 
+
                     if(state === "animate") {
-                    $(this).attr("src", $(this).attr("data-still"));
-                    $(this).attr("data-state", "still");
+                        $(this).attr("src", $(this).attr("data-still"));
+                        $(this).attr("data-state", "still");
                     }
+                    if(state === "still") {
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                    } 
+                    
                 })
-                
-
-                // $(".buttons button").click(function () {
-                //     q += 1; 
-                //     console.log(q);
-                //     var g = q*3;
-                //     console.log("two" + q);
-                //     if(g < 25) {
-                //         for (i; i < g ; i++) {
-                //             console.log(i);
-                //             $(".gifs").append("<img class='imgSize' src='" + response.data[i].images.fixed_height.url + "'>");
-                //             $(".gifs").append("<p>" + response.data[i].rating + "</p>"); 
-                //         }
-                //     } else {
-                //         return false;
-                //     }
-                // });
-
             });
         })
     }

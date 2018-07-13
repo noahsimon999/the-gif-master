@@ -16,8 +16,6 @@ body {
     font-size: 5em;
 }
 
-
-
 .row {
     width: 99%;
     position: relative;
@@ -25,23 +23,30 @@ body {
 }
 .left {
     background-color: gray;
-    height:90vh;
+    height:75vh;
     padding-bottom: 50px;
+    padding-top: 20px;
     overflow: scroll;
     overflow-x: hidden;
-    
+     
 }
 
+#food-input {
+    width: 285px;
+}
 
 .right {
-    height: 90vh;
+    height: 75vh;
     overflow: scroll;
     overflow-x: hidden;
 }
 .buttons button:hover {
     background-color: blue;
     color: white;
-    
+}
+
+.gifs img:hover {
+    border: 3px solid blue;
 }
 
 .foods {
